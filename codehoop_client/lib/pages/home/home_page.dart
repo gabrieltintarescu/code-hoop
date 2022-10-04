@@ -90,7 +90,7 @@ class HomePage extends StatelessWidget {
                     ),
                     child: TextField(
                       decoration: InputDecoration(
-                        contentPadding: const EdgeInsets.only(top: 5),
+                        contentPadding: const EdgeInsets.only(top: 1),
                         hintText: 'Search for a course',
                         border: InputBorder.none,
                         icon: SvgPicture.asset('assets/icons/search.svg'),
@@ -100,9 +100,40 @@ class HomePage extends StatelessWidget {
                   const SizedBox(height: 30),
                   Expanded(
                     child: GridView.count(
+                      //physics: const NeverScrollableScrollPhysics(),
                       crossAxisCount: 2,
                       childAspectRatio: .85,
-                      children: const [CategoryCard()],
+                      crossAxisSpacing: 20,
+                      mainAxisSpacing: 20,
+                      children: const [
+                        CategoryCard(
+                          thumbnailUrl:
+                              'assets/icons/security-illustration.svg',
+                          title: 'Cyber Security Course',
+                        ),
+                        CategoryCard(
+                          thumbnailUrl: 'assets/icons/cloud-illustration.svg',
+                          title: 'Cloud Data Course',
+                        ),
+                        CategoryCard(
+                          thumbnailUrl:
+                              'assets/icons/computer-illustration.svg',
+                          title: 'Java Advanced Course',
+                        ),
+                        CategoryCard(
+                          thumbnailUrl: 'assets/icons/gaming-illustration.svg',
+                          title: 'Unity Game Developement',
+                        ),
+                        CategoryCard(
+                          thumbnailUrl:
+                              'assets/icons/computer2-illustration.svg',
+                          title: 'Data Structures Course',
+                        ),
+                        CategoryCard(
+                          thumbnailUrl: 'assets/icons/websiteillustration.svg',
+                          title: 'Web Design Course',
+                        ),
+                      ],
                     ),
                   )
                 ],

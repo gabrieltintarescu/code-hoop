@@ -8,3 +8,4 @@ const kBlueColor = Color(0xFF817DC0);
 const kShadowColor = Color(0xFFE6E6E6);
 
 const kBannerColor = Color(0xFFF5CEB8);
+const kActiveColor = Color(0xFFE68148);

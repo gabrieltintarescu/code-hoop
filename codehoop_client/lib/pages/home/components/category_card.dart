@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class CategoryCard extends StatelessWidget {
+  final String thumbnailUrl;
+  final String title;
   const CategoryCard({
     Key? key,
+    required this.thumbnailUrl,
+    required this.title,
   }) : super(key: key);
 
   @override
@@ -18,15 +22,15 @@ class CategoryCard extends StatelessWidget {
         children: [
           const Spacer(),
           SvgPicture.asset(
-            'assets/icons/security-illustration.svg',
-            height: 130,
-            width: 130,
+            thumbnailUrl,
+            height: 110,
+            width: 110,
           ),
           const Spacer(),
-          const Text(
-            'Cyber Security Course',
+          Text(
+            title,
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 15),
+            style: const TextStyle(fontSize: 15),
           )
         ],
       ),
