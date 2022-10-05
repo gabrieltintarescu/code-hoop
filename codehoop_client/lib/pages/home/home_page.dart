@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
+import 'components/botttom_nav_button.dart';
 import 'components/category_card.dart';
 
 class HomePage extends StatelessWidget {
@@ -11,6 +12,32 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: Container(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 40,
+          vertical: 10,
+        ),
+        height: 80,
+        color: Colors.white,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: const [
+            BottomNavButton(
+              imageAsset: 'assets/icons/calendar.svg',
+              title: 'Today',
+            ),
+            BottomNavButton(
+              imageAsset: 'assets/icons/read-book-icon.svg',
+              title: 'Courses',
+              isActive: true,
+            ),
+            BottomNavButton(
+              imageAsset: 'assets/icons/Settings.svg',
+              title: 'Settings',
+            ),
+          ],
+        ),
+      ),
       body: Stack(
         children: [
           Container(

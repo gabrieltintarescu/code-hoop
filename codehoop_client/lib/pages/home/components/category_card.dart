@@ -12,27 +12,37 @@ class CategoryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(13),
-      ),
-      child: Column(
-        children: [
-          const Spacer(),
-          SvgPicture.asset(
-            thumbnailUrl,
-            height: 110,
-            width: 110,
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(13),
+      child: Container(
+        decoration: const BoxDecoration(
+          color: Colors.white,
+        ),
+        child: Material(
+          color: Colors.transparent,
+          child: InkWell(
+            onTap: () {},
+            child: Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Column(
+                children: [
+                  const Spacer(),
+                  SvgPicture.asset(
+                    thumbnailUrl,
+                    height: 110,
+                    width: 110,
+                  ),
+                  const Spacer(),
+                  Text(
+                    title,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(fontSize: 15),
+                  )
+                ],
+              ),
+            ),
           ),
-          const Spacer(),
-          Text(
-            title,
-            textAlign: TextAlign.center,
-            style: const TextStyle(fontSize: 15),
-          )
-        ],
+        ),
       ),
     );
   }
