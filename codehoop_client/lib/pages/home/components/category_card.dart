@@ -34,7 +34,7 @@ class CategoryCard extends StatelessWidget {
                   ),
                   const Spacer(),
                   Text(
-                    title,
+                    '$title Course',
                     textAlign: TextAlign.center,
                     style: const TextStyle(fontSize: 15),
                   )

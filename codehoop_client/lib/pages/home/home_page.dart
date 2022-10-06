@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
-import 'components/botttom_nav_button.dart';
+import '../../components/search_bar.dart';
+import 'components/bottom_nav_bar.dart';
 import 'components/category_card.dart';
 
 class HomePage extends StatelessWidget {
@@ -12,32 +13,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: Container(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 40,
-          vertical: 10,
-        ),
-        height: 80,
-        color: Colors.white,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: const [
-            BottomNavButton(
-              imageAsset: 'assets/icons/calendar.svg',
-              title: 'Today',
-            ),
-            BottomNavButton(
-              imageAsset: 'assets/icons/read-book-icon.svg',
-              title: 'Courses',
-              isActive: true,
-            ),
-            BottomNavButton(
-              imageAsset: 'assets/icons/Settings.svg',
-              title: 'Settings',
-            ),
-          ],
-        ),
-      ),
+      bottomNavigationBar: const BottomNavBar(),
       body: Stack(
         children: [
           Container(
@@ -106,24 +82,7 @@ class HomePage extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 30,
-                      vertical: 5,
-                    ),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(29.5),
-                    ),
-                    child: TextField(
-                      decoration: InputDecoration(
-                        contentPadding: const EdgeInsets.only(top: 1),
-                        hintText: 'Search for a course',
-                        border: InputBorder.none,
-                        icon: SvgPicture.asset('assets/icons/search.svg'),
-                      ),
-                    ),
-                  ),
+                  const SearchBar(),
                   const SizedBox(height: 30),
                   Expanded(
                     child: GridView.count(
@@ -136,29 +95,29 @@ class HomePage extends StatelessWidget {
                         CategoryCard(
                           thumbnailUrl:
                               'assets/icons/security-illustration.svg',
-                          title: 'Cyber Security Course',
+                          title: 'Cyber Security',
                         ),
                         CategoryCard(
                           thumbnailUrl: 'assets/icons/cloud-illustration.svg',
-                          title: 'Cloud Data Course',
+                          title: 'Cloud Data',
                         ),
                         CategoryCard(
                           thumbnailUrl:
                               'assets/icons/computer-illustration.svg',
-                          title: 'Java Advanced Course',
+                          title: 'Java Advanced',
                         ),
                         CategoryCard(
                           thumbnailUrl: 'assets/icons/gaming-illustration.svg',
-                          title: 'Unity Game Developement',
+                          title: 'Unity Game',
                         ),
                         CategoryCard(
                           thumbnailUrl:
                               'assets/icons/computer2-illustration.svg',
-                          title: 'Data Structures Course',
+                          title: 'Data Structures',
                         ),
                         CategoryCard(
                           thumbnailUrl: 'assets/icons/websiteillustration.svg',
-                          title: 'Web Design Course',
+                          title: 'Web Design',
                         ),
                       ],
                     ),
