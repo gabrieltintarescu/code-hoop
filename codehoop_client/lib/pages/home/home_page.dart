@@ -1,5 +1,6 @@
 import 'package:codehoop_client/controller/app_controller.dart';
 import 'package:codehoop_client/util/constants.dart';
+import 'package:entry/entry.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -100,8 +101,14 @@ class HomePage extends StatelessWidget {
                           maxCrossAxisExtent: context.width / 2,
                         ),
                         itemCount: appController.coursesList.length,
-                        itemBuilder: ((context, index) => CategoryCard(
-                            course: appController.coursesList[index])),
+                        itemBuilder: ((context, index) => Entry(
+                              yOffset: 1000,
+                              delay: const Duration(milliseconds: 500),
+                              duration: const Duration(milliseconds: 1200),
+                              curve: Curves.easeIn,
+                              child: CategoryCard(
+                                  course: appController.coursesList[index]),
+                            )),
                       )),
                     )
                   ],

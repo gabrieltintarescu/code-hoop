@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
 class AppController extends GetxController {
-  final API_URL = 'http://192.168.56.1/api/v1/courses';
+  final API_URL = 'http://5.12.218.236/api/v1/courses';
   var coursesList = <Course>[].obs;
 
   @override

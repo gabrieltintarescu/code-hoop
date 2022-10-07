@@ -1,3 +1,4 @@
+import 'package:codehoop_client/util/constants.dart';
 import 'package:flutter/material.dart';
 
 import 'botttom_nav_button.dart';
@@ -10,12 +11,22 @@ class BottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            offset: Offset(0, -17),
+            blurRadius: 23,
+            spreadRadius: -13,
+            color: kShadowColor,
+          ),
+        ],
+      ),
       padding: const EdgeInsets.symmetric(
         horizontal: 40,
         vertical: 10,
       ),
       height: 80,
-      color: Colors.white,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: const [

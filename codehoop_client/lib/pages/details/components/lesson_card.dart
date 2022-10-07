@@ -23,13 +23,14 @@ class LessonCard extends StatelessWidget {
     );
 
     Get.defaultDialog(
-        title: '${lesson.name} Lesson',
-        titleStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-        titlePadding: const EdgeInsets.only(top: 15),
-        content: YoutubePlayer(
-          controller: videoController,
-          showVideoProgressIndicator: false,
-        ));
+      title: '${lesson.name} Lesson',
+      titleStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+      titlePadding: const EdgeInsets.only(top: 15),
+      content: YoutubePlayer(
+        controller: videoController,
+        showVideoProgressIndicator: false,
+      ),
+    );
   }
 
   @override

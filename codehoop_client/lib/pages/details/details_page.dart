@@ -37,9 +37,9 @@ class DetailsPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(height: context.height * 0.05),
-                    const Text(
-                      'Advanced Java',
-                      style: TextStyle(
+                    Text(
+                      course.name,
+                      style: const TextStyle(
                         fontSize: 35.0,
                         color: kTextColor,
                         fontWeight: FontWeight.bold,
