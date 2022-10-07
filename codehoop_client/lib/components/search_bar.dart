@@ -19,7 +19,7 @@ class SearchBar extends StatelessWidget {
       ),
       child: TextField(
         decoration: InputDecoration(
-          contentPadding: const EdgeInsets.only(top: 1),
+          contentPadding: const EdgeInsets.only(top: 5),
           hintText: 'Search',
           border: InputBorder.none,
           icon: SvgPicture.asset('assets/icons/search.svg'),
