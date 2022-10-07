@@ -1,22 +1,22 @@
 import 'package:codehoop_client/components/search_bar.dart';
+import 'package:codehoop_client/model/course.dart';
+import 'package:codehoop_client/pages/home/components/bottom_nav_bar.dart';
 import 'package:codehoop_client/util/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 
 import 'components/lesson_card.dart';
 import 'components/tip_card.dart';
 
 class DetailsPage extends StatelessWidget {
-  const DetailsPage({super.key});
+  final Course course;
+  const DetailsPage({super.key, required this.course});
 
   @override
   Widget build(BuildContext context) {
-    final List<String> mockupData =
-        List.generate(6, (index) => 'test').toList();
-
-    final List<int> tipData = List.generate(2, (index) => index).toList();
-
     return Scaffold(
+      bottomNavigationBar: const BottomNavBar(),
       body: SingleChildScrollView(
         child: Stack(
           children: [
@@ -46,16 +46,35 @@ class DetailsPage extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 7),
-                    const Text(
-                      '3-10 Min Course',
-                      style: TextStyle(fontWeight: FontWeight.bold),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          '${course.duration} Course',
+                          style: const TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        const SizedBox(width: 15),
+                        Container(
+                          margin: const EdgeInsets.only(bottom: 5),
+                          child: RatingBarIndicator(
+                            rating: (course.rating / 100) * 5,
+                            itemBuilder: (context, index) => const Icon(
+                              Icons.star,
+                              color: Colors.amber,
+                            ),
+                            itemCount: 5,
+                            itemSize: 18.0,
+                            direction: Axis.horizontal,
+                          ),
+                        ),
+                      ],
                     ),
                     const SizedBox(height: 10),
                     SizedBox(
                       width: context.width * .7,
-                      child: const Text(
-                        'This course will show you how to build Android apps using best practices recommended by Google.',
-                        style: TextStyle(wordSpacing: 2, fontSize: 14.2),
+                      child: Text(
+                        course.description,
+                        style: const TextStyle(wordSpacing: 2, fontSize: 14.2),
                       ),
                     ),
                     const SizedBox(height: 20),
@@ -73,9 +92,11 @@ class DetailsPage extends StatelessWidget {
                         mainAxisSpacing: 20,
                         maxCrossAxisExtent: context.width / 2,
                       ),
-                      itemCount: mockupData.length,
-                      itemBuilder: ((context, index) =>
-                          const LessonCard(isActive: false)),
+                      itemCount: course.lessons.length,
+                      itemBuilder: ((context, index) => LessonCard(
+                            isActive: index == 0 ? true : false,
+                            lesson: course.lessons[index],
+                          )),
                     ),
                     const SizedBox(height: 20),
                     const Text(
@@ -88,11 +109,13 @@ class DetailsPage extends StatelessWidget {
                     ListView.builder(
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
-                      itemCount: tipData.length,
-                      itemBuilder: ((context, index) => const TipCard(
-                            imageUrl: 'assets/icons/programmer.svg',
-                            title: 'Take your time!',
-                            description: 'You can always pause your course.',
+                      itemCount: course.instructions.length,
+                      itemBuilder: ((context, index) => TipCard(
+                            imageUrl: (index % 2 == 0)
+                                ? 'assets/icons/programmer.svg'
+                                : 'assets/icons/work.svg',
+                            title: course.instructions[index].title,
+                            description: course.instructions[index].message,
                           )),
                     )
                   ],

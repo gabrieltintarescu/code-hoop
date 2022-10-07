@@ -1,13 +1,36 @@
+import 'package:codehoop_client/model/course.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 import '../../../util/constants.dart';
 
 class LessonCard extends StatelessWidget {
   final bool isActive;
-  const LessonCard({
-    Key? key,
-    required this.isActive,
-  }) : super(key: key);
+  final Lesson lesson;
+  const LessonCard({Key? key, required this.isActive, required this.lesson})
+      : super(key: key);
+
+  void openVideo(BuildContext context) {
+    var urlCode = lesson.videoUrl.split('/');
+    YoutubePlayerController videoController = YoutubePlayerController(
+      initialVideoId: urlCode.last,
+      flags: const YoutubePlayerFlags(
+        autoPlay: true,
+        mute: false,
+        forceHD: true,
+      ),
+    );
+
+    Get.defaultDialog(
+        title: '${lesson.name} Lesson',
+        titleStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+        titlePadding: const EdgeInsets.only(top: 15),
+        content: YoutubePlayer(
+          controller: videoController,
+          showVideoProgressIndicator: false,
+        ));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +51,9 @@ class LessonCard extends StatelessWidget {
         child: Material(
           color: Colors.transparent,
           child: InkWell(
-            onTap: () {},
+            onTap: () => openVideo(context),
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.all(12.0),
               child: Row(
                 children: [
                   Container(
@@ -47,10 +70,15 @@ class LessonCard extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 10),
-                  const Text(
-                    'Session 01',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
+                  Flexible(
+                    child: Text(
+                      lesson.name,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12,
+                      ),
                     ),
                   )
                 ],

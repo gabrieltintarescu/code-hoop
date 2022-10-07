@@ -1,3 +1,4 @@
+import 'package:codehoop_client/controller/app_controller.dart';
 import 'package:codehoop_client/util/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -12,23 +13,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final mockupData = [
-      {
-        'url': 'assets/icons/security-illustration.svg',
-        'title': 'Cyber Security'
-      },
-      {'url': 'assets/icons/cloud-illustration.svg', 'title': 'Java Advanced'},
-      {
-        'url': 'assets/icons/computer-illustration.svg',
-        'title': 'Cyber Security Course'
-      },
-      {'url': 'assets/icons/gaming-illustration.svg', 'title': 'Unity Game'},
-      {
-        'url': 'assets/icons/computer2-illustration.svg',
-        'title': 'Data Structures'
-      },
-      {'url': 'assets/icons/websiteillustration.svg', 'title': 'Web Design'},
-    ];
+    AppController appController = Get.find();
 
     return Scaffold(
       bottomNavigationBar: const BottomNavBar(),
@@ -104,21 +89,21 @@ class HomePage extends StatelessWidget {
                     ),
                     const SearchBar(),
                     const SizedBox(height: 30),
-                    GridView.builder(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                        childAspectRatio: .85,
-                        crossAxisSpacing: 20,
-                        mainAxisSpacing: 20,
-                        maxCrossAxisExtent: context.width / 2,
-                      ),
-                      itemCount: mockupData.length,
-                      itemBuilder: ((context, index) => CategoryCard(
-                            thumbnailUrl: mockupData[index]['url'] ?? 'url',
-                            title: mockupData[index]['title'] ?? 'title',
-                          )),
-                    ),
+                    Obx(
+                      () => (GridView.builder(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+                          childAspectRatio: .85,
+                          crossAxisSpacing: 20,
+                          mainAxisSpacing: 20,
+                          maxCrossAxisExtent: context.width / 2,
+                        ),
+                        itemCount: appController.coursesList.length,
+                        itemBuilder: ((context, index) => CategoryCard(
+                            course: appController.coursesList[index])),
+                      )),
+                    )
                   ],
                 ),
               ),

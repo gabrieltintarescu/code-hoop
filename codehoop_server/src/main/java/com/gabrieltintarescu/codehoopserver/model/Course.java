@@ -27,6 +27,8 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotEmpty(message = "Course name cannot be empty.")
+    private String imageUrl;
+    @NotEmpty(message = "Image URL cannot be empty.")
     private String name;
     @NotEmpty(message = "Course description cannot be empty.")
     private String description;

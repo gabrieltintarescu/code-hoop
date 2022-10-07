@@ -1,4 +1,6 @@
+import 'package:codehoop_client/controller/app_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -6,6 +8,7 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var appController = Get.put(AppController());
     return Scaffold(
       body: SafeArea(
         child: Stack(

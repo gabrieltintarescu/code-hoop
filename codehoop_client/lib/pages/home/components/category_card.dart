@@ -1,14 +1,12 @@
+import 'package:codehoop_client/model/course.dart';
+import 'package:codehoop_client/pages/details/details_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 
 class CategoryCard extends StatelessWidget {
-  final String thumbnailUrl;
-  final String title;
-  const CategoryCard({
-    Key? key,
-    required this.thumbnailUrl,
-    required this.title,
-  }) : super(key: key);
+  final Course course;
+  const CategoryCard({Key? key, required this.course}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,20 +19,25 @@ class CategoryCard extends StatelessWidget {
         child: Material(
           color: Colors.transparent,
           child: InkWell(
-            onTap: () {},
+            onTap: () => Get.to(
+              () => DetailsPage(course: course),
+              transition: Transition.cupertino,
+            ),
             child: Padding(
               padding: const EdgeInsets.all(20.0),
               child: Column(
                 children: [
                   const Spacer(),
-                  SvgPicture.asset(
-                    thumbnailUrl,
+                  SvgPicture.network(
+                    course.imageUrl,
                     height: 110,
                     width: 110,
+                    placeholderBuilder: (context) =>
+                        const CircularProgressIndicator(color: Colors.grey),
                   ),
                   const Spacer(),
                   Text(
-                    '$title Course',
+                    '${course.name} Course',
                     textAlign: TextAlign.center,
                     style: const TextStyle(fontSize: 15),
                   )
