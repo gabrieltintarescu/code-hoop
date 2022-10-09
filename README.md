@@ -2,7 +2,7 @@
 ![Logo](https://raw.githubusercontent.com/gabrieltintarescu/code-hoop/main/resources/logo.png)
 
 
-# 💬 CodeHoop - Courses App
+# 💻 CodeHoop - Courses App
 App providing users with educational programming-related materials.
 
 ![](https://raw.githubusercontent.com/gabrieltintarescu/code-hoop/main/resources/presentation.png)
