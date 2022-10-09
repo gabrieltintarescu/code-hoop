@@ -1,15 +1,31 @@
 
+![Logo](https://raw.githubusercontent.com/gabrieltintarescu/code-hoop/main/resources/logo.png)
 
 
 # 💬 CodeHoop - Courses App
-Educational app that provides users with useful programming-related courses and materials.
+App providing users with educational programming-related materials.
 
+![](https://raw.githubusercontent.com/gabrieltintarescu/code-hoop/main/resources/presentation.png)
 
 
 
 ## ✒️ Authors
 
 - [@gabrieltintarescu](https://www.github.com/gabrieltintarescu)
+
+
+### 💻 Technologies
+- Java + Spring Boot
+- Dart + Flutter
+- MySQL
+
+### 💎 Features
+-	Spring Boot back-end
+-   API for retrieving courses from MySQL database
+
+### 📖 To Do’s
+-   User accounts
+-	Track user progress
 
 
 
